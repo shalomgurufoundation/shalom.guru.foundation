@@ -40,7 +40,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(10px);
       box-shadow: 0 2px 20px rgba(16,24,40,.06);
     }
@@ -470,8 +470,8 @@
       font-size: 24px;
     }
 
-    .volunteer-form {
-      max-width: 720px;
+    .form-box {
+      max-width: 820px;
       margin: 0 auto;
       background: white;
       border-radius: 26px;
@@ -486,7 +486,8 @@
     }
 
     .form-grid input,
-    .form-grid textarea {
+    .form-grid textarea,
+    .form-grid select {
       width: 100%;
       border: 1px solid #e1e8f0;
       background: #f7f9fc;
@@ -495,62 +496,57 @@
       padding: 16px 18px;
       font-size: 16px;
       outline: none;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .social-grid-pro {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 24px;
-}
+    .social-inline {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
 
-.social-link-card {
-  background: white;
-  border-radius: 22px;
-  box-shadow: var(--shadow);
-  border: 1px solid #e5edf3;
-  min-height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: .2s ease;
-  padding: 20px;
-}
+    .social-inline a {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5edf3;
+      transition: 0.2s ease;
+    }
 
-.social-link-card:hover {
-  transform: translateY(-4px);
-  border-color: #cfd9e6;
-}
+    .social-inline a:hover {
+      transform: translateY(-3px);
+    }
 
-.social-link-card img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-}
+    .social-inline img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
 
-@media (max-width: 900px) {
-  .social-grid-pro {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+    .sticky-donate {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 1500;
+    }
 
-@media (max-width: 520px) {
-  .social-grid-pro {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .social-link-card {
-    min-height: 96px;
-    border-radius: 18px;
-    padding: 16px;
-  }
-
-  .social-link-card img {
-    width: 40px;
-    height: 40px;
-  }
-}
+    .sticky-donate button {
+      border: none;
+      background: linear-gradient(135deg, #a0151e, #c51623);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,.18);
+      cursor: pointer;
+    }
 
     .footer {
       background: #08111f;
@@ -578,8 +574,7 @@
       .grid-2,
       .objective-grid,
       .team-grid,
-      .contact-grid,
-      .social-grid {
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -601,11 +596,15 @@
       .section { padding: 58px 0; }
       .panel,
       .mission-box,
-      .volunteer-form { padding: 22px; }
+      .form-box { padding: 22px; }
       .hero-card img { min-height: 280px; }
       .hero-actions { flex-direction: column; }
       .btn { width: 100%; }
       .nav-actions .btn-primary { display: none; }
+      .sticky-donate {
+        right: 14px;
+        bottom: 14px;
+      }
     }
   </style>
 </head>
@@ -620,7 +619,7 @@
       <a href="#work" onclick="closeMenu()">Our Work</a>
       <a href="#donate" onclick="closeMenu()">Donate</a>
       <a href="#team" onclick="closeMenu()">Leadership</a>
-      <a href="#volunteer" onclick="closeMenu()">Volunteer</a>
+      <a href="#connect" onclick="closeMenu()">Connect</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
     </nav>
   </aside>
@@ -641,7 +640,7 @@
         <a href="#work">Our Work</a>
         <a href="#donate">Donate</a>
         <a href="#team">Leadership</a>
-        <a href="#volunteer">Volunteer</a>
+        <a href="#connect">Connect</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -727,25 +726,15 @@
 
         <div class="objective-grid">
           <div class="objective">Provide scholarship and educational support for students who are deprived of education due to financial hardship.<br><br><strong>आर्थिक अभावका कारण शिक्षा प्राप्त गर्न नसकेका विद्यार्थीहरूलाई छात्रवृत्ति तथा शैक्षिक सहयोग प्रदान गर्ने।</strong></div>
-
           <div class="objective">Promote environmental protection through plantation, sanitation, drainage, and public cleanliness efforts.<br><br><strong>वृक्षारोपण, सरसफाइ, ढल व्यवस्थापन तथा वातावरण संरक्षण सम्बन्धी कार्यक्रम सञ्चालन गर्ने।</strong></div>
-
           <div class="objective">Organize health camps, clinics, and support programs for financially vulnerable people.<br><br><strong>आर्थिक रूपमा कमजोर वर्गका लागि स्वास्थ्य शिविर तथा स्वास्थ्य सहयोग कार्यक्रम सञ्चालन गर्ने।</strong></div>
-
           <div class="objective">Conduct poverty alleviation and social welfare related programs.<br><br><strong>गरिबी निवारण तथा सामाजिक कल्याण सम्बन्धी कार्यक्रम सञ्चालन गर्ने।</strong></div>
-
           <div class="objective">Support people affected by educational barriers, poverty, and social discrimination.<br><br><strong>शैक्षिक, आर्थिक तथा सामाजिक विभेदबाट प्रभावित व्यक्तिहरूलाई सहयोग गर्ने।</strong></div>
-
           <div class="objective">Support children, vulnerable groups, and those needing protection and assistance.<br><br><strong>बालबालिका तथा असहाय वर्गका व्यक्तिहरूको संरक्षण तथा सहयोग गर्ने।</strong></div>
-
           <div class="objective">Run social, economic, and cultural awareness programs for community upliftment.<br><br><strong>सामाजिक, आर्थिक तथा सांस्कृतिक चेतनामूलक कार्यक्रम सञ्चालन गर्ने।</strong></div>
-
           <div class="objective">Provide skill-based training and help create livelihood opportunities.<br><br><strong>सीप विकास तालिम प्रदान गरी रोजगारीका अवसर सिर्जना गर्ने।</strong></div>
-
           <div class="objective">Promote and preserve Nepali cultural values through relevant programs.<br><br><strong>नेपाली संस्कृति तथा परम्पराको संरक्षण र प्रवर्द्धन गर्ने।</strong></div>
-
           <div class="objective">Raise awareness against social evils, injustice, violence, and harmful practices.<br><br><strong>सामाजिक विकृति, अन्याय, हिंसा तथा कुरीतिविरुद्ध जनचेतना फैलाउने।</strong></div>
-
           <div class="objective">Promote awareness related to rights, duties, law, and human dignity.<br><br><strong>मानव अधिकार, कर्तव्य तथा कानुनी चेतना सम्बन्धी कार्यक्रम सञ्चालन गर्ने।</strong></div>
         </div>
       </div>
@@ -818,20 +807,28 @@
       </div>
     </section>
 
-    <section class="section" id="volunteer">
+    <section class="section" id="connect">
       <div class="container">
         <div class="section-head">
-          <h3>Become a Volunteer</h3>
-          <p>People who want to support the foundation can register their interest here.</p>
+          <h3>Connect With Us</h3>
+          <p>Send us a message, become a volunteer, or register to receive updates.</p>
         </div>
 
-        <form class="volunteer-form">
+        <form class="form-box" action="https://formcarry.com/s/ddBBVdJREYF" method="POST" accept-charset="UTF-8">
           <div class="form-grid">
-            <input type="text" placeholder="Full Name">
-            <input type="email" placeholder="Email Address">
-            <input type="text" placeholder="Phone Number">
-            <textarea rows="5" placeholder="Tell us how you would like to help"></textarea>
-            <button type="submit" class="btn btn-primary" style="width:100%;">Register</button>
+            <select name="inquiry_type" required>
+              <option value="">Select request type</option>
+              <option value="message">Send a Message</option>
+              <option value="volunteer">Become a Volunteer</option>
+              <option value="updates">Register to Receive Updates</option>
+            </select>
+
+            <input type="text" name="full_name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="phone" placeholder="Phone Number">
+            <textarea name="message" rows="5" placeholder="Write your message or tell us how you want to help"></textarea>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Submit</button>
           </div>
         </form>
       </div>
@@ -864,28 +861,28 @@
           </div>
         </div>
 
-<div class="section-head" style="margin-top:48px; margin-bottom:24px;">
-  <h3 style="font-size:38px;">Follow Us</h3>
-  <p>Connect with Shalom Guru Foundation on social media.</p>
-</div>
+        <div class="section-head" style="margin-top:48px; margin-bottom:24px;">
+          <h3 style="font-size:38px;">Follow Us</h3>
+          <p>Connect with Shalom Guru Foundation on social media.</p>
+        </div>
 
-<div class="social-grid-pro">
-  <a class="social-link-card" href="https://facebook.com/shalomgurufoundation" target="_blank" aria-label="Facebook">
-    <img src="images/facebook.png" alt="Facebook">
-  </a>
+        <div class="social-inline">
+          <a href="https://facebook.com/shalomgurufoundation" target="_blank" aria-label="Facebook">
+            <img src="images/facebook.png" alt="Facebook">
+          </a>
 
-  <a class="social-link-card" href="https://instagram.com/shalomgurufoundation" target="_blank" aria-label="Instagram">
-    <img src="images/instagram.png" alt="Instagram">
-  </a>
+          <a href="https://instagram.com/shalomgurufoundation" target="_blank" aria-label="Instagram">
+            <img src="images/insta.png" alt="Instagram">
+          </a>
 
-  <a class="social-link-card" href="https://tiktok.com/@shalomgurufoundation" target="_blank" aria-label="TikTok">
-    <img src="images/tiktok.png" alt="TikTok">
-  </a>
+          <a href="https://tiktok.com/@shalomgurufoundation" target="_blank" aria-label="TikTok">
+            <img src="images/tiktok.png" alt="TikTok">
+          </a>
 
-  <a class="social-link-card" href="https://youtube.com/@shalomgurufoundation" target="_blank" aria-label="YouTube">
-    <img src="images/youtube.png" alt="YouTube">
-  </a>
-</div>
+          <a href="https://youtube.com/@shalomgurufoundation" target="_blank" aria-label="YouTube">
+            <img src="images/youtube.png" alt="YouTube">
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -899,11 +896,15 @@
         <a href="#work">Our Work</a>
         <a href="#donate">Donate</a>
         <a href="#team">Leadership</a>
-        <a href="#volunteer">Volunteer</a>
+        <a href="#connect">Connect</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
   </footer>
+
+  <div class="sticky-donate">
+    <button onclick="showDonateNotice()">Donate</button>
+  </div>
 
   <div id="donatePopup" style="
     display:none;
@@ -992,4 +993,4 @@
     }, 1000);
   </script>
 </body>
-          </html>
+              </html>
